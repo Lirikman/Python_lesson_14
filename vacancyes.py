@@ -6,17 +6,17 @@ from bs4 import BeautifulSoup
 import requests
 from fake_useragent import UserAgent
 
-url = 'https://www.rabota.ru/vacancy/?query=%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%81%D1%82%20python&page=1'
+url_1 = 'https://www.rabota.ru/vacancy/?query=%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%81%D1%82%20python&page=1'
 url_2 = 'https://joblab.ru/search.php?r=vac&srprofecy=python&kw_w2=1&srzpmin=&srregion=50&srcity=&srcategory=&submit=1'
 
 user = UserAgent()
 headers = {'User-Agent': user.random}
 
-page = requests.get(url)
+page_1 = requests.get(url_1)
 page_2 = requests.get(url_2, headers=headers)
 
 
-soup_rabota = BeautifulSoup(page.text, 'html.parser')
+soup_rabota = BeautifulSoup(page_1.text, 'html.parser')
 soup_joblab = BeautifulSoup(page_2.text, 'html.parser')
 
 # Парсинг названий компаний
